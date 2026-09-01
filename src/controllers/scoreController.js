@@ -12,6 +12,8 @@ const index = async (req, res) => {
 
     res.status(500).send("Server Error");
   }
+
+  
 };
 
 
