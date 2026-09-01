@@ -15,6 +15,11 @@ const Score = sequelize.define(
       allowNull: false
     },
 
+     team1_logo: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
     team1_score: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -26,6 +31,11 @@ const Score = sequelize.define(
     },
 
     team2_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+
+    team2_logo: {
       type: DataTypes.STRING,
       allowNull: false
     },

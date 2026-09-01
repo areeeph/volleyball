@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-lg mt-5 ">
+<div class="mx-auto max-w-lg mt-5">
   <!-- Team 1 -->
   <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 mb-5">
     <div class="mb-5 flex items-center gap-3">
@@ -24,14 +24,16 @@
           Team Name
         </label>
 
-        <input
+        
+
+        <select
           type="text"
           id="team1_name"
           name="team1_name"
           value="<%= score.team1_name %>"
           required
           class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-        />
+        ></select>
       </div>
 
       <!-- Score -->
@@ -131,14 +133,14 @@
           Team Name
         </label>
 
-        <input
+        <select
           type="text"
           id="team2_name"
           name="team2_name"
           value="<%= score.team2_name %>"
           required
-          class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10"
-        />
+          class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+        ></select>
       </div>
 
       <!-- Score -->
@@ -232,6 +234,58 @@
 </div>
 
 <script>
+  const teams = [
+    {
+      id: 1,
+      name: "Gen Z",
+      logo: "/images/genz.png",
+    },
+    {
+      id: 2,
+      name: "Comets SC",
+      logo: "/images/comets.png",
+    },
+    
+    {
+      id: 3,
+      name: "SSB",
+      logo: "/images/ssb.png",
+    },
+    {
+      id: 4,
+      name: "Young Leaders",
+      logo: "/images/youngleaders.png",
+    },
+    {
+      id: 5,
+      name: "Veevaru VT",
+      logo: "/images/veevaru.png",
+    },
+    {
+      id: 6,
+      name: "Zest VT",
+      logo: "/images/zest.png",
+    },
+    {
+      id: 7,
+      name: "Rockets",
+      logo: "/images/rockets.png",
+    },
+  ];
+
+
+  const select = document.getElementById("team1_name");
+    teams.forEach((team, index) => {
+  const option = new Option(team.name, team.name);
+  select.add(option);
+});
+
+const select1 = document.getElementById("team2_name");
+    teams.forEach((team, index) => {
+  const option = new Option(team.name, team.name);
+  select1.add(option);
+});
+
   function changeScore(inputId, amount) {
     const input = document.getElementById(inputId);
 
@@ -255,6 +309,38 @@
     const team2_score = parseInt(document.getElementById("team2_score").value);
     const team2_set = parseInt(document.getElementById("team2_set").value);
 
+    if(team1_name == "Gen Z") {
+      team1_logo = "/images/genz.png";
+    } else if(team1_name == "Comets SC") {
+      team1_logo = "/images/comets.png";
+    } else if(team1_name == "SSB") {
+      team1_logo = "/images/ssb.png";
+    } else if(team1_name == "Young Leaders") {
+      team1_logo = "/images/youngleaders.png";
+    } else if(team1_name == "Veevaru VT") {
+      team1_logo = "/images/veevaru.png";
+    } else if(team1_name == "Zest VT") {
+      team1_logo = "/images/zest.png";
+    } else if(team1_name == "Rockets") {
+      team1_logo = "/images/rockets.png";
+    }
+
+    if(team2_name == "Gen Z") {
+      team2_logo = "/images/genz.png";
+    } else if(team2_name == "Comets SC") {
+      team2_logo = "/images/comets.png";
+    } else if(team2_name == "SSB") {
+      team2_logo = "/images/ssb.png";
+    } else if(team2_name == "Young Leaders") {
+      team2_logo = "/images/youngleaders.png";
+    } else if(team2_name == "Veevaru VT") {
+      team2_logo = "/images/veevaru.png";
+    } else if(team2_name == "Zest VT") {
+      team2_logo = "/images/zest.png";
+    } else if(team2_name == "Rockets") {
+      team2_logo = "/images/rockets.png";
+    }
+
     const data = JSON.stringify({
       team1_name,
       team1_score,
@@ -262,6 +348,8 @@
       team2_name,
       team2_score,
       team2_set,
+      team1_logo,
+      team2_logo,
     });
 
     console.log("Data to send:", data);

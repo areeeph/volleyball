@@ -3,6 +3,7 @@ const { getIO } = require("../socket");
 
 const index = async (req, res) => {
   try {
+    
     const score = await Score.findByPk(2);
 
     return res.json(score);
@@ -28,6 +29,8 @@ const update = async (req, res) => {
       team2_name,
       team2_score,
       team2_set,
+      team1_logo,
+      team2_logo,
       current_set,
     } = req.body;
 
@@ -39,12 +42,16 @@ const update = async (req, res) => {
       team2_name,
       team2_score,
       team2_set,
+      team1_logo,
+      team2_logo,
       current_set,
     });
 
     const io = getIO();
 
     io.emit("scoreUpdated", score);
+
+    console.log("Score updated:", score);
 
     res.json({ message: "Score updated successfully", score });
   } catch (error) {
@@ -69,6 +76,8 @@ const reset = async (req, res) => {
       team2_name: "Team 2",
       team2_score: 0,
       team2_set: 0,
+      team1_logo: "/images/blank.jpg",
+      team2_logo: "/images/blank.jpg",
       current_set: 1,
     });
 
