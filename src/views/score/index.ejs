@@ -50,7 +50,7 @@
 <script>
   updateScore();
 
-  const socket = io("http://localhost:3000");
+  const socket = io("http://localhost:7065");
 
   socket.on("scoreUpdated", (score) => {
     console.log("Score updated:", score);
