@@ -1,0 +1,79 @@
+<div>
+  <div class="bg-blue-800 text-white h-8 w-50 mb-1 rounded-lg">
+    <div class="flex items-center h-8 justify-between">
+      <div class="flex items-center py-1 pl-2">
+        <h2 id="team1-name"><%= score.team1_name %></h2>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="flex items-center h-8 py-1">
+          <img
+            class="h-7 w-7 rounded-full"
+            src="/images/comets.jpg
+            "
+            alt=""
+          />
+        </div>
+        <div><h3 id="team1-set"><%= score.team1_set %></h3></div>
+        <div
+          class="rounded-r-lg w-8 h-8 bg-white text-blue-700 font-semibold flex items-center justify-center"
+        >
+          <h3 id="team1-score"><%= score.team1_score %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-blue-800 text-white h-8 w-50 mb-1 rounded-lg">
+    <div class="flex items-center h-8 justify-between">
+      <div class="flex items-center py-1 pl-2">
+        <h2 id="team2-name"><%= score.team2_name %></h2>
+      </div>
+      <div class="flex items-center space-x-2">
+        <div class="flex items-center h-8 py-1">
+          <img
+            class="h-7 w-7 rounded-full"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRak37UycaAX8JiJMZaqAQQyzVs3oPylwQywdOuNZPStQ&s=10"
+            alt=""
+          />
+        </div>
+        <div><h3 id="team2-set"><%= score.team2_set %></h3></div>
+        <div
+          class="rounded-r-lg w-8 h-8 bg-white text-blue-700 font-semibold flex items-center justify-center"
+        >
+          <h3 id="team2-score"><%= score.team2_score %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  updateScore();
+
+  const socket = io("http://localhost:3000");
+
+  socket.on("scoreUpdated", (score) => {
+    console.log("Score updated:", score);
+    updateScore(score);
+  });
+
+  function updateScore(score) {
+    const team1Name = document.getElementById("team1-name");
+    const team1Set = document.getElementById("team1-set");
+    const team1Score = document.getElementById("team1-score");
+
+    const team2Name = document.getElementById("team2-name");
+    const team2Set = document.getElementById("team2-set");
+    const team2Score = document.getElementById("team2-score");
+
+    team1Name.textContent = score ? score.team1_name : "<%= score.team1_name %>";
+    team1Set.textContent = score ? score.team1_set : "<%= score.team1_set %>";
+    team1Score.textContent = score ? score.team1_score : "<%= score.team1_score %>";
+
+    team2Name.textContent = score ? score.team2_name : "<%= score.team2_name %>";
+    team2Set.textContent = score ? score.team2_set : "<%= score.team2_set %>";
+    team2Score.textContent = score ? score.team2_score : "<%= score.team2_score %>";
+
+  }
+  
+</script>
