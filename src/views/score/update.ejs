@@ -216,6 +216,9 @@
             )[0]?.score;
           }
 
+          team1_name.value = data.team1.name;
+          team2_name.value = data.team2.name;
+
           console.log(team1_score.value);
         } catch (error) {
           console.error("Error:", error);
