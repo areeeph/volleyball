@@ -1,12 +1,14 @@
-const { Score } = require("../models");
+const { Score, Set } = require("../models");
 const { getIO } = require("../socket");
 
 const index = async (req, res) => {
   try {
-    
-    const score = await Score.findByPk(2);
+    const team1 = await Score.findOne({ where: { team_id: 1 } });
+    const team2 = await Score.findOne({ where: { team_id: 2 } });
 
-    return res.json(score);
+    const sets = await Set.findAll();
+
+    return res.json({ team1, team2, sets });
   } catch (error) {
     console.error(error);
 
@@ -16,48 +18,131 @@ const index = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const score = await Score.findByPk(2);
-
-    if (!score) {
-      return res.status(404).send("Score not found");
-    }
-
     const {
+      team1_id,
       team1_name,
-      team1_score,
-      team1_set,
-      team2_name,
-      team2_score,
-      team2_set,
       team1_logo,
+      team2_id,
+      team2_name,
       team2_logo,
-      current_set,
     } = req.body;
 
-    console.log("hello");
-    await score.update({
-      team1_name,
-      team1_score,
-      team1_set,
-      team2_name,
-      team2_score,
-      team2_set,
-      team1_logo,
-      team2_logo,
-      current_set,
+    const team_1 = await Score.findOne({ where: { team_id: team1_id } });
+    const team_2 = await Score.findOne({ where: { team_id: team2_id } });
+
+    await team_1.update({
+      name: team1_name,
+      logo: team1_logo,
     });
+
+     await team_2.update({
+      name: team2_name,
+      logo: team2_logo,
+    });
+
+    const team1 = await Score.findOne({ where: { team_id: 1 } });
+    const team2 = await Score.findOne({ where: { team_id: 2 } });
+
+    const sets = await Set.findAll();
 
     const io = getIO();
 
-    io.emit("scoreUpdated", score);
+    io.emit("DataUpdated", { team1, team2, sets });
 
-    console.log("Score updated:", score);
-
-    res.json({ message: "Score updated successfully", score });
+    res.json({ message: "Set created successfully" });
   } catch (error) {
     console.error(error);
 
     res.status(500).send("Failed to update score");
+  }
+};
+
+const update_score = async (req, res) => {
+  const { team_id, score } = req.body;
+  try {
+    const set = await Set.findOne({
+      where: { set: req.body.set, team_id: team_id },
+    });
+
+    if (!set) {
+      return res.status(404).send("Score not found");
+    }
+
+    await set.update({
+      score: score,
+    });
+
+    const team1 = await Score.findOne({ where: { team_id: 1 } });
+    const team2 = await Score.findOne({ where: { team_id: 2 } });
+
+    const sets = await Set.findAll();
+
+    const io = getIO();
+
+    io.emit("DataUpdated", { team1, team2, sets });
+
+    res.json({ message: "Set created successfully" });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Failed to update score");
+  }
+};
+
+const create_set = async (req, res) => {
+  try {
+    console.log(req.body);
+    const { set } = req.body;
+
+    const team1_set = await Set.create({
+      set: set,
+      team_id: 1,
+      score: 0,
+    });
+
+    const team2_set = await Set.create({
+      set: set,
+      team_id: 2,
+      score: 0,
+    });
+
+    const team1 = await Score.findOne({ where: { team_id: 1 } });
+    const team2 = await Score.findOne({ where: { team_id: 2 } });
+
+    const sets = await Set.findAll();
+
+    const io = getIO();
+
+    io.emit("DataUpdated", { team1, team2, sets });
+
+    res.json({ message: "Set created successfully" });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Failed to create set");
+  }
+};
+
+const deleteSet = async (req, res) => {
+  try {
+    const { set } = req.body;
+
+    const data = await Set.destroy({ where: { set: set } });
+
+    const team1 = await Score.findOne({ where: { team_id: 1 } });
+    const team2 = await Score.findOne({ where: { team_id: 2 } });
+
+    const sets = await Set.findAll();
+
+    const io = getIO();
+
+    io.emit("DataUpdated", { team1, team2, sets });
+
+    res.json({ message: "Set deleted successfully" });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Failed to create set");
   }
 };
 
@@ -97,4 +182,7 @@ module.exports = {
   index,
   update,
   reset,
+  update_score,
+  create_set,
+  deleteSet,
 };

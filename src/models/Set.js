@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const Score = sequelize.define(
-  "Score",
+const Set = sequelize.define(
+  "Set",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -10,27 +10,27 @@ const Score = sequelize.define(
       primaryKey: true
     },
 
-    team_id:{
+    score:{
       type: DataTypes.INTEGER,
       allowNull: false
     },
 
-    name: {
-      type: DataTypes.STRING,
+    set:{
+      type: DataTypes.INTEGER,
       allowNull: false
-    },
+    },  
 
-     logo: {
-      type: DataTypes.STRING,
+    team_id:{
+      type: DataTypes.INTEGER,
       allowNull: false
-    },
+    }
 
   },
   
   {
-    tableName: "scores",
+    tableName: "sets",
     timestamps: true
   }
 );
 
-module.exports = Score;
+module.exports = Set;

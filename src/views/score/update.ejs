@@ -1,390 +1,400 @@
-<div class="mx-auto max-w-lg mt-5">
-  <!-- Team 1 -->
-  <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 mb-5">
-    <div class="mb-5 flex items-center gap-3">
-      <div
-        class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700"
-      >
-        1
-      </div>
-
-      <div>
-        <h3 class="font-semibold text-gray-900">Team 1</h3>
-        <p class="text-xs text-gray-500">First team</p>
-      </div>
-    </div>
-
-    <div class="space-y-5">
-      <!-- Team Name -->
-      <div>
-        <label
-          for="team1_name"
-          class="mb-2 block text-sm font-medium text-gray-700"
+<div id="app" class="mx-auto px-5 mt-5">
+  <div class="grid grid-cols-2 gap-5">
+    <!-- Team 1 -->
+    <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 mb-5">
+      <div class="mb-5 flex items-center gap-3">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-700"
         >
-          Team Name
-        </label>
+          1
+        </div>
 
-        
-
-        <select
-          type="text"
-          id="team1_name"
-          name="team1_name"
-          value="<%= score.team1_name %>"
-          required
-          class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-        ></select>
-      </div>
-
-      <!-- Score -->
-      <div>
-        <label class="mb-2 block text-sm font-medium text-gray-700">
-          Score
-        </label>
-
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            onclick="changeScore('team1_score', -1)"
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-white text-2xl font-semibold text-gray-700 shadow-sm transition hover:bg-gray-100 active:scale-95"
-          >
-            −
-          </button>
-
-          <input
-            type="number"
-            id="team1_score"
-            name="team1_score"
-            value="<%= score.team1_score %>"
-            min="0"
-            required
-            class="h-12 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-center text-2xl font-bold text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-          />
-
-          <button
-            type="button"
-            onclick="changeScore('team1_score', 1)"
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-2xl font-semibold text-white shadow-sm transition hover:bg-gray-800 active:scale-95"
-          >
-            +
-          </button>
+        <div>
+          <h3 class="font-semibold text-gray-900">Team 1</h3>
+          <p class="text-xs text-gray-500">First team</p>
         </div>
       </div>
 
-      <!-- Sets -->
-      <div>
-        <label class="mb-2 block text-sm font-medium text-gray-700">
-          Sets Won
-        </label>
-
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            onclick="changeScore('team1_set', -1)"
-            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white text-xl font-semibold text-gray-700 hover:bg-gray-100 active:scale-95"
+      <div class="space-y-5">
+        <!-- Team Name -->
+        <div>
+          <label
+            for="team1_name"
+            class="mb-2 block text-sm font-medium text-gray-700"
           >
-            −
-          </button>
+            Team Name
+          </label>
 
-          <input
-            type="number"
-            id="team1_set"
-            name="team1_set"
-            value="<%= score.team1_set %>"
-            min="0"
+          <select
+            type="text"
+            id="team1_name"
+            v-model="team1_name"
             required
-            class="h-10 min-w-0 flex-1 rounded-lg border border-gray-300 bg-white px-3 text-center text-lg font-bold text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-          />
-
-          <button
-            type="button"
-            onclick="changeScore('team1_set', 1)"
-            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-900 text-xl font-semibold text-white hover:bg-gray-800 active:scale-95"
+            class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
           >
-            +
-          </button>
+            <option v-for="team in teams" :key="team.id" :value="team.name">
+              {{ team.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Score -->
+        <div>
+          <label class="mb-2 block text-sm font-medium text-gray-700">
+            Score
+          </label>
+
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              v-on:click="updateScore(1, (team1_score  - 1))"
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-white text-2xl font-semibold text-gray-700 shadow-sm transition hover:bg-gray-100 active:scale-95"
+            >
+              −
+            </button>
+
+            <input
+              type="number"
+              id="team1_score"
+              v-model="team1_score"
+              min="0"
+              required
+              class="h-12 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-center text-2xl font-bold text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+            />
+
+            <button
+              type="button"
+              v-on:click="updateScore(1, (team1_score  + 1))"
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-2xl font-semibold text-white shadow-sm transition hover:bg-gray-800 active:scale-95"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team 2 -->
+    <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 mb-5">
+      <div class="mb-5 flex items-center gap-3">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 font-bold text-red-700"
+        >
+          2
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-900">Team 2</h3>
+          <p class="text-xs text-gray-500">Second team</p>
+        </div>
+      </div>
+
+      <div class="space-y-5">
+        <!-- Team Name -->
+        <div>
+          <label
+            for="team2_name"
+            class="mb-2 block text-sm font-medium text-gray-700"
+          >
+            Team Name
+          </label>
+
+          <select
+            type="text"
+            id="team2_name"
+            v-model="team2_name"
+            required
+            class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+          >
+            <option v-for="team in teams" :key="team.id" :value="team.name">
+              {{ team.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Score -->
+        <div>
+          <label class="mb-2 block text-sm font-medium text-gray-700">
+            Score
+          </label>
+
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              v-on:click="updateScore(2, (team2_score  - 1))"
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-white text-2xl font-semibold text-gray-700 shadow-sm transition hover:bg-gray-100 active:scale-95"
+            >
+              −
+            </button>
+
+            <input
+              type="number"
+              id="team2_score"
+              v-model="team2_score"
+              min="0"
+              required
+              class="h-12 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-center text-2xl font-bold text-gray-900 outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10"
+            />
+
+            <button
+              type="button"
+              v-on:click="updateScore(2, (team2_score  + 1))"
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-2xl font-semibold text-white shadow-sm transition hover:bg-gray-800 active:scale-95"
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- Team 2 -->
-  <div class="rounded-2xl border border-gray-200 bg-gray-50 p-5 mb-5">
-    <div class="mb-5 flex items-center gap-3">
-      <div
-        class="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 font-bold text-red-700"
-      >
-        2
-      </div>
-
-      <div>
-        <h3 class="font-semibold text-gray-900">Team 2</h3>
-        <p class="text-xs text-gray-500">Second team</p>
-      </div>
-    </div>
-
-    <div class="space-y-5">
-      <!-- Team Name -->
-      <div>
-        <label
-          for="team2_name"
-          class="mb-2 block text-sm font-medium text-gray-700"
-        >
-          Team Name
-        </label>
-
-        <select
-          type="text"
-          id="team2_name"
-          name="team2_name"
-          value="<%= score.team2_name %>"
-          required
-          class="block w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
-        ></select>
-      </div>
-
-      <!-- Score -->
-      <div>
-        <label class="mb-2 block text-sm font-medium text-gray-700">
-          Score
-        </label>
-
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            onclick="changeScore('team2_score', -1)"
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-white text-2xl font-semibold text-gray-700 shadow-sm transition hover:bg-gray-100 active:scale-95"
-          >
-            −
-          </button>
-
-          <input
-            type="number"
-            id="team2_score"
-            name="team2_score"
-            value="<%= score.team2_score %>"
-            min="0"
-            required
-            class="h-12 min-w-0 flex-1 rounded-xl border border-gray-300 bg-white px-4 text-center text-2xl font-bold text-gray-900 outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10"
-          />
-
-          <button
-            type="button"
-            onclick="changeScore('team2_score', 1)"
-            class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900 text-2xl font-semibold text-white shadow-sm transition hover:bg-gray-800 active:scale-95"
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      <!-- Sets -->
-      <div>
-        <label class="mb-2 block text-sm font-medium text-gray-700">
-          Sets Won
-        </label>
-
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            onclick="changeScore('team2_set', -1)"
-            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-gray-300 bg-white text-xl font-semibold text-gray-700 hover:bg-gray-100 active:scale-95"
-          >
-            −
-          </button>
-
-          <input
-            type="number"
-            id="team2_set"
-            name="team2_set"
-            value="<%= score.team2_set %>"
-            min="0"
-            required
-            class="h-10 min-w-0 flex-1 rounded-lg border border-gray-300 bg-white px-3 text-center text-lg font-bold text-gray-900 outline-none focus:border-red-500 focus:ring-4 focus:ring-red-500/10"
-          />
-
-          <button
-            type="button"
-            onclick="changeScore('team2_set', 1)"
-            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-900 text-xl font-semibold text-white hover:bg-gray-800 active:scale-95"
-          >
-            +
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Actions -->
-  <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
-    <button
-      onclick="reset()"
-      class="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50"
-    >
-      Reset
-    </button>
-    <button
-      onclick="update()"
-      type="button"
-      class="inline-flex items-center justify-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-900/20"
-    >
-      Save Changes
-    </button>
+  <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
+    <div class="flex space-x-2">
+      <button
+        v-on:click="createSet()"
+        class="inline-flex items-center justify-center rounded-xl border border-blue-700 bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+      >
+        Add Set
+      </button>
+      <button
+        :disabled="current_set == 1"
+        v-on:click="deleteSet()"
+        class="inline-flex items-center justify-center rounded-xl border border-red-700 bg-red-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700"
+      >
+        Delete Set
+      </button>
+    </div>
+    <div class="flex space-x-2">
+      <button
+        onclick="reset()"
+        class="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50"
+      >
+        Reset
+      </button>
+      <button
+        v-on:click="updateTeam()"
+        type="button"
+        class="inline-flex items-center justify-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-900/20"
+      >
+        Save Changes
+      </button>
+    </div>
   </div>
 </div>
 
 <script>
-  const teams = [
-    {
-      id: 1,
-      name: "Gen Z",
-      logo: "/images/genz.png",
-    },
-    {
-      id: 2,
-      name: "Comets SC",
-      logo: "/images/comets.png",
-    },
-    
-    {
-      id: 3,
-      name: "SSB",
-      logo: "/images/ssb.png",
-    },
-    {
-      id: 4,
-      name: "Young Leaders",
-      logo: "/images/youngleaders.png",
-    },
-    {
-      id: 5,
-      name: "Veevaru VT",
-      logo: "/images/veevaru.png",
-    },
-    {
-      id: 6,
-      name: "Zest VT",
-      logo: "/images/zest.png",
-    },
-    {
-      id: 7,
-      name: "Rockets",
-      logo: "/images/rockets.png",
-    },
-  ];
+  const { createApp, ref, onMounted, computed } = Vue;
 
+  createApp({
+    setup() {
+      const team_data = ref(null);
+      const team1_name = ref("Gen Z");
+      const team2_name = ref("Comets SC");
+      const current_set = ref(1);
+      const team1_score = ref(0);
+      const team2_score = ref(0);
 
-  const select = document.getElementById("team1_name");
-    teams.forEach((team, index) => {
-  const option = new Option(team.name, team.name);
-  select.add(option);
-});
+      const fetchData = async () => {
+        try {
+          const response = await fetch("/api");
 
-const select1 = document.getElementById("team2_name");
-    teams.forEach((team, index) => {
-  const option = new Option(team.name, team.name);
-  select1.add(option);
-});
+          const data = await response.json();
+          console.log("Fetched teams:", data);
 
-  function changeScore(inputId, amount) {
-    const input = document.getElementById(inputId);
+          current_set.value = data.sets.length / 2;
 
-    if (!input) return;
+          if (current_set.value == 0) {
+            await createSet();
+            current_set.value = 1;
+          } else {
+            team1_score.value = data.sets.filter(
+              (set) => set.set == current_set.value && set.team_id == 1,
+            )[0]?.score;
+            team2_score.value = data.sets.filter(
+              (set) => set.set == current_set.value && set.team_id == 2,
+            )[0]?.score;
+          }
 
-    const currentValue = parseInt(input.value) || 0;
-    const min = parseInt(input.min) || 0;
-
-    const newValue = Math.max(min, currentValue + amount);
-
-    input.value = newValue;
-    update();
-  }
-
-  function update() {
-    const team1_name = document.getElementById("team1_name").value;
-    const team1_score = parseInt(document.getElementById("team1_score").value);
-    const team1_set = parseInt(document.getElementById("team1_set").value);
-
-    const team2_name = document.getElementById("team2_name").value;
-    const team2_score = parseInt(document.getElementById("team2_score").value);
-    const team2_set = parseInt(document.getElementById("team2_set").value);
-
-    if(team1_name == "Gen Z") {
-      team1_logo = "/images/genz.png";
-    } else if(team1_name == "Comets SC") {
-      team1_logo = "/images/comets.png";
-    } else if(team1_name == "SSB") {
-      team1_logo = "/images/ssb.png";
-    } else if(team1_name == "Young Leaders") {
-      team1_logo = "/images/youngleaders.png";
-    } else if(team1_name == "Veevaru VT") {
-      team1_logo = "/images/veevaru.png";
-    } else if(team1_name == "Zest VT") {
-      team1_logo = "/images/zest.png";
-    } else if(team1_name == "Rockets") {
-      team1_logo = "/images/rockets.png";
-    }
-
-    if(team2_name == "Gen Z") {
-      team2_logo = "/images/genz.png";
-    } else if(team2_name == "Comets SC") {
-      team2_logo = "/images/comets.png";
-    } else if(team2_name == "SSB") {
-      team2_logo = "/images/ssb.png";
-    } else if(team2_name == "Young Leaders") {
-      team2_logo = "/images/youngleaders.png";
-    } else if(team2_name == "Veevaru VT") {
-      team2_logo = "/images/veevaru.png";
-    } else if(team2_name == "Zest VT") {
-      team2_logo = "/images/zest.png";
-    } else if(team2_name == "Rockets") {
-      team2_logo = "/images/rockets.png";
-    }
-
-    const data = JSON.stringify({
-      team1_name,
-      team1_score,
-      team1_set,
-      team2_name,
-      team2_score,
-      team2_set,
-      team1_logo,
-      team2_logo,
-    });
-
-    console.log("Data to send:", data);
-    fetch("/api/update", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: data,
-    })
-      .then((response) => {
-        if (response.ok) {
-          //window.location.href = "/scores";
-        } else {
-          console.error("Failed to update score");
+          console.log(team1_score.value);
+        } catch (error) {
+          console.error("Error:", error);
         }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }
+      };
 
-  function reset() {
-    fetch("/api/reset", {
-      method: "GET",
-    })
-      .then((response) => {
-        if (response.ok) {
-          window.location.href = "/update";
-        } else {
-          console.error("Failed to update score");
+      const updateTeam = async (id, num) => {
+        let team1_logo = "/images/comets.png";
+        let team2_logo = "/images/genz.png";
+
+        if (team1_name.value == "Gen Z") {
+          team1_logo = "/images/genz.png";
+        } else if (team1_name.value == "SSB") {
+          team1_logo = "/images/ssb.png";
+        } else if (team1_name.value == "Young Leaders") {
+          team1_logo = "/images/youngleaders.png";
+        } else if (team1_name.value == "Veevaru VT") {
+          team1_logo = "/images/veevaru.png";
+        } else if (team1_name.value == "Zest VT") {
+          team1_logo = "/images/zest.png";
+        } else if (team1_name.value == "Rockets") {
+          team1_logo = "/images/rockets.png";
         }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+
+        if (team2_name.value == "Comets SC") {
+          team2_logo = "/images/comets.png";
+        } else if (team2_name.value == "SSB") {
+          team2_logo = "/images/ssb.png";
+        } else if (team2_name.value == "Young Leaders") {
+          team2_logo = "/images/youngleaders.png";
+        } else if (team2_name.value == "Veevaru VT") {
+          team2_logo = "/images/veevaru.png";
+        } else if (team2_name.value == "Zest VT") {
+          team2_logo = "/images/zest.png";
+        } else if (team2_name.value == "Rockets") {
+          team2_logo = "/images/rockets.png";
+        }
+
+        const data = {
+          team1_id: 1,
+          team1_name: team1_name.value,
+          team1_logo: team1_logo,
+          team2_id: 2,
+          team2_name: team2_name.value,
+          team2_logo: team2_logo,
+        };
+
+        console.log(data);
+        const response = await fetch("/api/update", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        
+        console.log(await response.json());
+      };
+
+      const updateScore = async (id, num) => {
+        const data = {
+          team_id: id,
+          score: num,
+          set: current_set.value,
+        };
+
+        console.log(data);
+        const response = await fetch("/api/update-score", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        if (response.ok) {
+          if (id == 1) {
+            team1_score.value = num;
+          } else {
+            team2_score.value = num;
+          }
+        }
+        console.log(await response.json());
+      };
+
+      const createSet = async () => {
+        try {
+          current_set.value++;
+          const data = {
+            set: current_set.value,
+          };
+          console.log(data);
+          const response = await fetch("/api/create-set", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            console.log("Set created successfully");
+            await fetchData();
+          } else {
+            console.error("Failed to create set");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+
+      const deleteSet = async (id, num) => {
+        const response = await fetch("/api/delete-set", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ set: current_set.value }),
+        });
+        if (response.ok) {
+          window.location.reload();
+        }
+      };
+
+      onMounted(async () => {
+        await fetchData();
+        console.log("Team Data:", team_data.value);
       });
-  }
+
+      const teams = [
+        {
+          id: 1,
+          name: "Gen Z",
+          logo: "/images/genz.png",
+        },
+        {
+          id: 2,
+          name: "Comets SC",
+          logo: "/images/comets.png",
+        },
+
+        {
+          id: 3,
+          name: "SSB",
+          logo: "/images/ssb.png",
+        },
+        {
+          id: 4,
+          name: "Young Leaders",
+          logo: "/images/youngleaders.png",
+        },
+        {
+          id: 5,
+          name: "Veevaru VT",
+          logo: "/images/veevaru.png",
+        },
+        {
+          id: 6,
+          name: "Zest VT",
+          logo: "/images/zest.png",
+        },
+        {
+          id: 7,
+          name: "Rockets",
+          logo: "/images/rockets.png",
+        },
+      ];
+
+      return {
+        teams,
+        team1_name,
+        team2_name,
+        team1_score,
+        team2_score,
+        current_set,
+        createSet,
+        updateScore,
+        deleteSet,
+        updateTeam,
+      };
+    },
+  }).mount("#app");
 </script>
