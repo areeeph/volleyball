@@ -27,25 +27,6 @@ const update = async (req, res) => {
       team2_logo,
     } = req.body;
 
-<<<<<<< HEAD
-    const team_1 = await Score.findOne({ where: { team_id: team1_id } });
-    const team_2 = await Score.findOne({ where: { team_id: team2_id } });
-
-    await team_1.update({
-      name: team1_name,
-      logo: team1_logo,
-    });
-
-     await team_2.update({
-      name: team2_name,
-      logo: team2_logo,
-    });
-
-    const team1 = await Score.findOne({ where: { team_id: 1 } });
-    const team2 = await Score.findOne({ where: { team_id: 2 } });
-
-    const sets = await Set.findAll();
-=======
     const [team_1, team_2] = await Promise.all([
       Score.findOne({ where: { team_id: team1_id } }),
       Score.findOne({ where: { team_id: team2_id } }),
@@ -67,7 +48,6 @@ const update = async (req, res) => {
       Score.findOne({ where: { team_id: 2 } }),
       Set.findAll(),
     ]);
->>>>>>> 13615bd (Points Table)
 
     const io = getIO();
 
@@ -96,18 +76,11 @@ const update_score = async (req, res) => {
       score: score,
     });
 
-<<<<<<< HEAD
-    const team1 = await Score.findOne({ where: { team_id: 1 } });
-    const team2 = await Score.findOne({ where: { team_id: 2 } });
-
-    const sets = await Set.findAll();
-=======
     const [team1, team2, sets] = await Promise.all([
       Score.findOne({ where: { team_id: 1 } }),
       Score.findOne({ where: { team_id: 2 } }),
       Set.findAll(),
     ]);
->>>>>>> 13615bd (Points Table)
 
     const io = getIO();
 
@@ -138,18 +111,11 @@ const create_set = async (req, res) => {
       score: 0,
     });
 
-<<<<<<< HEAD
-    const team1 = await Score.findOne({ where: { team_id: 1 } });
-    const team2 = await Score.findOne({ where: { team_id: 2 } });
-
-    const sets = await Set.findAll();
-=======
     const [team1, team2, sets] = await Promise.all([
       Score.findOne({ where: { team_id: 1 } }),
       Score.findOne({ where: { team_id: 2 } }),
       Set.findAll(),
     ]);
->>>>>>> 13615bd (Points Table)
 
     const io = getIO();
 
@@ -169,18 +135,11 @@ const deleteSet = async (req, res) => {
 
     const data = await Set.destroy({ where: { set: set } });
 
-<<<<<<< HEAD
-    const team1 = await Score.findOne({ where: { team_id: 1 } });
-    const team2 = await Score.findOne({ where: { team_id: 2 } });
-
-    const sets = await Set.findAll();
-=======
     const [team1, team2, sets] = await Promise.all([
       Score.findOne({ where: { team_id: 1 } }),
       Score.findOne({ where: { team_id: 2 } }),
       Set.findAll(),
     ]);
->>>>>>> 13615bd (Points Table)
 
     const io = getIO();
 

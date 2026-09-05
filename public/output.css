@@ -2,25 +2,20 @@
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
-  :root, :host {
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+  :root,
+  :host {
+    --font-sans:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
       "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol", "Noto Color Emoji";
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    --font-mono:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-100: oklch(93.6% 0.032 17.717);
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-700: oklch(50.5% 0.213 27.518);
-<<<<<<< HEAD
-    --color-green-500: oklch(72.3% 0.219 149.579);
-    --color-green-600: oklch(62.7% 0.194 149.214);
-    --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-100: oklch(93.2% 0.032 255.585);
-    --color-blue-200: oklch(88.2% 0.059 254.128);
-=======
-    --color-blue-100: oklch(93.2% 0.032 255.585);
->>>>>>> 13615bd (Points Table)
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
@@ -29,27 +24,14 @@
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
     --color-gray-300: oklch(87.2% 0.01 258.338);
-<<<<<<< HEAD
-    --color-gray-400: oklch(70.7% 0.022 261.325);
-=======
->>>>>>> 13615bd (Points Table)
     --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
-<<<<<<< HEAD
-    --color-black: #000;
-    --color-white: #fff;
-    --spacing: 0.25rem;
-    --container-lg: 32rem;
-    --container-xl: 36rem;
-    --container-4xl: 56rem;
-=======
     --color-neutral-800: oklch(26.9% 0 none);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-lg: 32rem;
->>>>>>> 13615bd (Points Table)
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
@@ -63,17 +45,10 @@
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-<<<<<<< HEAD
-    --tracking-tight: -0.025em;
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
-=======
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --blur-md: 12px;
->>>>>>> 13615bd (Points Table)
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -81,17 +56,36 @@
   }
 }
 @layer base {
-  *, ::after, ::before, ::backdrop, ::file-selector-button {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     border: 0 solid;
   }
-  html, :host {
+  html,
+  :host {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-family: var(
+      --default-font-family,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      "Noto Sans",
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji"
+    );
     font-feature-settings: var(--default-font-feature-settings, normal);
     font-variation-settings: var(--default-font-variation-settings, normal);
     -webkit-tap-highlight-color: transparent;
@@ -105,7 +99,12 @@
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: inherit;
     font-weight: inherit;
   }
@@ -114,19 +113,37 @@
     -webkit-text-decoration: inherit;
     text-decoration: inherit;
   }
-  b, strong {
+  b,
+  strong {
     font-weight: bolder;
   }
-  code, kbd, samp, pre {
-    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(
+      --default-mono-font-family,
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      "Liberation Mono",
+      "Courier New",
+      monospace
+    );
     font-feature-settings: var(--default-mono-font-feature-settings, normal);
-    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-variation-settings: var(
+      --default-mono-font-variation-settings,
+      normal
+    );
     font-size: 1em;
   }
   small {
     font-size: 80%;
   }
-  sub, sup {
+  sub,
+  sup {
     font-size: 75%;
     line-height: 0;
     position: relative;
@@ -152,18 +169,33 @@
   summary {
     display: list-item;
   }
-  ol, ul, menu {
+  ol,
+  ul,
+  menu {
     list-style: none;
   }
-  img, svg, video, canvas, audio, iframe, embed, object {
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
     display: block;
     vertical-align: middle;
   }
-  img, video {
+  img,
+  video {
     max-width: 100%;
     height: auto;
   }
-  button, input, select, optgroup, textarea, ::file-selector-button {
+  button,
+  input,
+  select,
+  optgroup,
+  textarea,
+  ::file-selector-button {
     font: inherit;
     font-feature-settings: inherit;
     font-variation-settings: inherit;
@@ -185,7 +217,8 @@
   ::placeholder {
     opacity: 1;
   }
-  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+  @supports (not (-webkit-appearance: -apple-pay-button)) or
+    (contain-intrinsic-size: 1px) {
     ::placeholder {
       color: currentcolor;
       @supports (color: color-mix(in lab, red, red)) {
@@ -209,7 +242,15 @@
   ::-webkit-datetime-edit-fields-wrapper {
     padding: 0;
   }
-  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+  ::-webkit-datetime-edit,
+  ::-webkit-datetime-edit-year-field,
+  ::-webkit-datetime-edit-month-field,
+  ::-webkit-datetime-edit-day-field,
+  ::-webkit-datetime-edit-hour-field,
+  ::-webkit-datetime-edit-minute-field,
+  ::-webkit-datetime-edit-second-field,
+  ::-webkit-datetime-edit-millisecond-field,
+  ::-webkit-datetime-edit-meridiem-field {
     padding-block: 0;
   }
   ::-webkit-calendar-picker-indicator {
@@ -218,10 +259,13 @@
   :-moz-ui-invalid {
     box-shadow: none;
   }
-  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+  button,
+  input:where([type="button"], [type="reset"], [type="submit"]),
+  ::file-selector-button {
     appearance: button;
   }
-  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
     height: auto;
   }
   [hidden]:where(:not([hidden="until-found"])) {
@@ -232,12 +276,6 @@
   .m-0 {
     margin: 0px;
   }
-<<<<<<< HEAD
-  .mx-2 {
-    margin-inline: calc(var(--spacing) * 2);
-  }
-=======
->>>>>>> 13615bd (Points Table)
   .mx-auto {
     margin-inline: auto;
   }
@@ -265,13 +303,8 @@
   .inline-flex {
     display: inline-flex;
   }
-<<<<<<< HEAD
-  .table {
-    display: table;
-=======
   .h-6 {
     height: calc(var(--spacing) * 6);
->>>>>>> 13615bd (Points Table)
   }
   .h-7 {
     height: calc(var(--spacing) * 7);
@@ -285,15 +318,12 @@
   .h-12 {
     height: calc(var(--spacing) * 12);
   }
-<<<<<<< HEAD
-=======
   .h-140 {
     height: calc(var(--spacing) * 140);
   }
   .w-6 {
     width: calc(var(--spacing) * 6);
   }
->>>>>>> 13615bd (Points Table)
   .w-7 {
     width: calc(var(--spacing) * 7);
   }
@@ -306,15 +336,6 @@
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
-<<<<<<< HEAD
-  .w-40 {
-    width: calc(var(--spacing) * 40);
-  }
-  .w-50 {
-    width: calc(var(--spacing) * 50);
-  }
-=======
->>>>>>> 13615bd (Points Table)
   .w-55 {
     width: calc(var(--spacing) * 55);
   }
@@ -336,57 +357,21 @@
   .w-full {
     width: 100%;
   }
-<<<<<<< HEAD
-  .max-w-80 {
-    max-width: calc(var(--spacing) * 80);
-  }
-  .max-w-90 {
-    max-width: calc(var(--spacing) * 90);
-  }
   .max-w-lg {
     max-width: var(--container-lg);
   }
-  .max-w-xl {
-    max-width: var(--container-xl);
-  }
-=======
-  .max-w-lg {
-    max-width: var(--container-lg);
-  }
->>>>>>> 13615bd (Points Table)
   .min-w-0 {
     min-width: 0px;
   }
   .min-w-55 {
     min-width: calc(var(--spacing) * 55);
   }
-<<<<<<< HEAD
-  .min-w-60 {
-    min-width: calc(var(--spacing) * 60);
-  }
-  .flex-1 {
-    flex: 1;
-  }
-  .flex-shrink {
-    flex-shrink: 1;
-  }
-  .shrink-0 {
-    flex-shrink: 0;
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .resize {
-    resize: both;
-  }
-=======
   .flex-1 {
     flex: 1;
   }
   .shrink-0 {
     flex-shrink: 0;
   }
->>>>>>> 13615bd (Points Table)
   .grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -402,12 +387,9 @@
   .justify-center {
     justify-content: center;
   }
-<<<<<<< HEAD
-=======
   .justify-end {
     justify-content: flex-end;
   }
->>>>>>> 13615bd (Points Table)
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -419,18 +401,30 @@
   }
   :where(.space-y-5 > :not(:last-child)) {
     --tw-space-y-reverse: 0;
-    margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
-    margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+    margin-block-start: calc(
+      calc(var(--spacing) * 5) * var(--tw-space-y-reverse)
+    );
+    margin-block-end: calc(
+      calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse))
+    );
   }
   :where(.space-x-2 > :not(:last-child)) {
     --tw-space-x-reverse: 0;
-    margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
-    margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
+    margin-inline-start: calc(
+      calc(var(--spacing) * 2) * var(--tw-space-x-reverse)
+    );
+    margin-inline-end: calc(
+      calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse))
+    );
   }
   :where(.space-x-3 > :not(:last-child)) {
     --tw-space-x-reverse: 0;
-    margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
-    margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
+    margin-inline-start: calc(
+      calc(var(--spacing) * 3) * var(--tw-space-x-reverse)
+    );
+    margin-inline-end: calc(
+      calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse))
+    );
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -452,13 +446,10 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-<<<<<<< HEAD
-=======
   .border-r {
     border-right-style: var(--tw-border-style);
     border-right-width: 1px;
   }
->>>>>>> 13615bd (Points Table)
   .border-blue-700 {
     border-color: var(--color-blue-700);
   }
@@ -474,12 +465,6 @@
   .bg-blue-100 {
     background-color: var(--color-blue-100);
   }
-<<<<<<< HEAD
-  .bg-blue-500 {
-    background-color: var(--color-blue-500);
-  }
-=======
->>>>>>> 13615bd (Points Table)
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
@@ -504,15 +489,16 @@
   .bg-white {
     background-color: var(--color-white);
   }
-<<<<<<< HEAD
-=======
   .bg-white\/40 {
     background-color: color-mix(in srgb, #fff 40%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-white) 40%, transparent);
+      background-color: color-mix(
+        in oklab,
+        var(--color-white) 40%,
+        transparent
+      );
     }
   }
->>>>>>> 13615bd (Points Table)
   .p-5 {
     padding: calc(var(--spacing) * 5);
   }
@@ -531,11 +517,6 @@
   .py-1 {
     padding-block: var(--spacing);
   }
-<<<<<<< HEAD
-  .py-3 {
-    padding-block: calc(var(--spacing) * 3);
-  }
-=======
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -545,7 +526,6 @@
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
   }
->>>>>>> 13615bd (Points Table)
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
   }
@@ -596,45 +576,73 @@
   .text-gray-900 {
     color: var(--color-gray-900);
   }
-<<<<<<< HEAD
-=======
   .text-neutral-800 {
     color: var(--color-neutral-800);
   }
->>>>>>> 13615bd (Points Table)
   .text-red-700 {
     color: var(--color-red-700);
   }
   .text-white {
     color: var(--color-white);
   }
-<<<<<<< HEAD
-  .underline {
-    text-decoration-line: underline;
-=======
   .shadow {
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
->>>>>>> 13615bd (Points Table)
+    --tw-shadow:
+      0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+      0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-sm {
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow:
+      0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+      0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-<<<<<<< HEAD
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-=======
   .backdrop-blur-md {
     --tw-backdrop-blur: blur(var(--blur-md));
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
->>>>>>> 13615bd (Points Table)
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,)
+      var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,)
+      var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
+      var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,)
+      var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
+      var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,)
+      var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,)
+      var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
+      var(--tw-backdrop-sepia,);
   }
   .transition {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-property:
+      color,
+      background-color,
+      border-color,
+      outline-color,
+      text-decoration-color,
+      fill,
+      stroke,
+      --tw-gradient-from,
+      --tw-gradient-via,
+      --tw-gradient-to,
+      opacity,
+      box-shadow,
+      transform,
+      translate,
+      scale,
+      rotate,
+      filter,
+      -webkit-backdrop-filter,
+      backdrop-filter,
+      display,
+      content-visibility,
+      overlay,
+      pointer-events;
+    transition-timing-function: var(
+      --tw-ease,
+      var(--default-transition-timing-function)
+    );
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .outline-none {
@@ -645,18 +653,6 @@
     border-top-right-radius: var(--radius-lg);
     border-bottom-right-radius: var(--radius-lg);
   }
-<<<<<<< HEAD
-  .last\:bg-green-500:last-child {
-    background-color: var(--color-green-500);
-  }
-  .last\:bg-green-600:last-child {
-    background-color: var(--color-green-600);
-  }
-  .last\:bg-red-500:last-child {
-    background-color: var(--color-red-500);
-  }
-=======
->>>>>>> 13615bd (Points Table)
   .last\:bg-red-600:last-child {
     background-color: var(--color-red-600);
   }
@@ -664,12 +660,6 @@
     color: var(--color-white);
   }
   @media (hover: hover) {
-<<<<<<< HEAD
-    .hover\:bg-blue-600:hover {
-      background-color: var(--color-blue-600);
-    }
-=======
->>>>>>> 13615bd (Points Table)
     .hover\:bg-blue-700:hover {
       background-color: var(--color-blue-700);
     }
@@ -693,25 +683,52 @@
     border-color: var(--color-red-500);
   }
   .focus\:ring-4:focus {
-    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+      calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .focus\:ring-blue-500\/10:focus {
-    --tw-ring-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 10%, transparent);
+    --tw-ring-color: color-mix(
+      in srgb,
+      oklch(62.3% 0.214 259.815) 10%,
+      transparent
+    );
     @supports (color: color-mix(in lab, red, red)) {
-      --tw-ring-color: color-mix(in oklab, var(--color-blue-500) 10%, transparent);
+      --tw-ring-color: color-mix(
+        in oklab,
+        var(--color-blue-500) 10%,
+        transparent
+      );
     }
   }
   .focus\:ring-gray-900\/20:focus {
-    --tw-ring-color: color-mix(in srgb, oklch(21% 0.034 264.665) 20%, transparent);
+    --tw-ring-color: color-mix(
+      in srgb,
+      oklch(21% 0.034 264.665) 20%,
+      transparent
+    );
     @supports (color: color-mix(in lab, red, red)) {
-      --tw-ring-color: color-mix(in oklab, var(--color-gray-900) 20%, transparent);
+      --tw-ring-color: color-mix(
+        in oklab,
+        var(--color-gray-900) 20%,
+        transparent
+      );
     }
   }
   .focus\:ring-red-500\/10:focus {
-    --tw-ring-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 10%, transparent);
+    --tw-ring-color: color-mix(
+      in srgb,
+      oklch(63.7% 0.237 25.331) 10%,
+      transparent
+    );
     @supports (color: color-mix(in lab, red, red)) {
-      --tw-ring-color: color-mix(in oklab, var(--color-red-500) 10%, transparent);
+      --tw-ring-color: color-mix(
+        in oklab,
+        var(--color-red-500) 10%,
+        transparent
+      );
     }
   }
   .focus\:outline-none:focus {
@@ -736,15 +753,12 @@
     }
   }
 }
-<<<<<<< HEAD
-=======
 body {
   background-image: url("http://localhost:3000/images/bg.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
->>>>>>> 13615bd (Points Table)
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -829,12 +843,6 @@ body {
   inherits: false;
   initial-value: 0 0 #0000;
 }
-<<<<<<< HEAD
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-=======
 @property --tw-backdrop-blur {
   syntax: "*";
   inherits: false;
@@ -870,7 +878,6 @@ body {
 @property --tw-backdrop-sepia {
   syntax: "*";
   inherits: false;
->>>>>>> 13615bd (Points Table)
 }
 @property --tw-scale-x {
   syntax: "*";
@@ -888,8 +895,12 @@ body {
   initial-value: 1;
 }
 @layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
+    ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+    *,
+    ::before,
+    ::after,
+    ::backdrop {
       --tw-space-y-reverse: 0;
       --tw-space-x-reverse: 0;
       --tw-border-style: solid;
@@ -908,9 +919,6 @@ body {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-<<<<<<< HEAD
-      --tw-outline-style: solid;
-=======
       --tw-backdrop-blur: initial;
       --tw-backdrop-brightness: initial;
       --tw-backdrop-contrast: initial;
@@ -920,7 +928,6 @@ body {
       --tw-backdrop-opacity: initial;
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
->>>>>>> 13615bd (Points Table)
       --tw-scale-x: 1;
       --tw-scale-y: 1;
       --tw-scale-z: 1;
