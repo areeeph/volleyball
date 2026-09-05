@@ -1,0 +1,106 @@
+<div id="app" class="mx-auto py-5">
+  <div class="bg-white/40 w-60 h-140 backdrop-blur-md rounded-xl shadow">
+    <div class="py-5">
+      <h2 class="text-center text-neutral-800 mb-2 text-lg font-semibold">
+        Last 10 Points
+      </h2>
+      <div v-for="point in data" :key="point.id" class="grid grid-cols-2">
+        <div class="border-r border-gray-300 flex justify-end">
+          <div
+            v-if="point.team_id == 1"
+            class="py-2 px-3 flex items-center space-x-2"
+          >
+            <p class="text-lg">{{ point.point }}</p>
+            <img src="/images/ball.png" class="w-6 h-6" />
+          </div>
+        </div>
+        <div>
+          <div
+            v-if="point.team_id == 2"
+            class="py-2 px-3 flex items-center space-x-2"
+          >
+            <img src="/images/ball.png" class="w-6 h-6" />
+            <p class="text-lg">{{ point.point }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="border-r border-gray-300 flex justify-end">
+          <div class="py-2 px-3 flex items-center space-x-2">
+            <p class="text-lg">Comets</p>
+          </div>
+        </div>
+        <div>
+          <div class="py-2 px-3 flex items-center space-x-2">
+            <p class="text-lg">Rockets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const { createApp, ref, onMounted, computed } = Vue;
+
+  createApp({
+    setup() {
+      const data = [
+        {
+          id: 1,
+          team_id: 2,
+          point: 14,
+        },
+        {
+          id: 2,
+          team_id: 1,
+          point: 15,
+        },
+        {
+          id: 3,
+          team_id: 1,
+          point: 16,
+        },
+        {
+          id: 4,
+          team_id: 2,
+          point: 17,
+        },
+        {
+          id: 5,
+          team_id: 1,
+          point: 18,
+        },
+        {
+          id: 6,
+          team_id: 1,
+          point: 19,
+        },
+        {
+          id: 7,
+          team_id: 2,
+          point: 20,
+        },
+        {
+          id: 8,
+          team_id: 1,
+          point: 21,
+        },
+        {
+          id: 9,
+          team_id: 1,
+          point: 22,
+        },
+        {
+          id: 10,
+          team_id: 2,
+          point: 23,
+        },
+      ];
+
+      return {
+        data,
+      };
+    },
+  }).mount("#app");
+</script>

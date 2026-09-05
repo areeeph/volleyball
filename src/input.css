@@ -1,1 +1,12 @@
+<<<<<<< HEAD
 @import "tailwindcss";
+=======
+@import "tailwindcss";
+
+body {
+  background-image: url("http://localhost:3000/images/bg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+>>>>>>> 13615bd (Points Table)
