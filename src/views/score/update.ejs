@@ -274,7 +274,7 @@
           },
           body: JSON.stringify(data),
         });
-        
+
         console.log(await response.json());
       };
 
@@ -299,6 +299,19 @@
           } else {
             team2_score.value = num;
           }
+
+          const stat = {
+            team_id: id,
+            point: num,
+          };
+
+          const response = await fetch("/api/stat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(stat),
+          });
         }
         console.log(await response.json());
       };

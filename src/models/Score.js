@@ -7,30 +7,30 @@ const Score = sequelize.define(
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
 
-    team_id:{
+    team_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      unique: true,
     },
 
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
 
-     logo: {
+    logo: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-
   },
-  
+
   {
     tableName: "scores",
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
 module.exports = Score;

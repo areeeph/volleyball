@@ -20,7 +20,7 @@ const startServer = async () => {
     console.log("Database connected");
 
     // Development only
-    await sequelize.sync();
+    await sequelize.sync({ alter: false });
 
     server.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);

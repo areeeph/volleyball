@@ -4,7 +4,7 @@
       <h2 class="text-center text-neutral-800 mb-2 text-lg font-semibold">
         Last 10 Points
       </h2>
-      <div v-for="point in data" :key="point.id" class="grid grid-cols-2">
+      <div v-for="point in stats" :key="point.id" class="grid grid-cols-2">
         <div class="border-r border-gray-300 flex justify-end">
           <div
             v-if="point.team_id == 1"
@@ -27,12 +27,14 @@
       <div class="grid grid-cols-2">
         <div class="border-r border-gray-300 flex justify-end">
           <div class="py-2 px-3 flex items-center space-x-2">
-            <p class="text-lg">Comets</p>
+            <p class="text-lg">
+              {{ team1?.name }}
+            </p>
           </div>
         </div>
         <div>
           <div class="py-2 px-3 flex items-center space-x-2">
-            <p class="text-lg">Rockets</p>
+            <p class="text-lg">{{ team2?.name }}</p>
           </div>
         </div>
       </div>
@@ -45,11 +47,41 @@
 
   createApp({
     setup() {
+      const socket = io("http://localhost:3000");
+      //const socket = io("https://volley.aliareef.com");
+
+      const stats = ref([]);
+      const team1 = ref(null);
+      const team2 = ref(null);
+
+      socket.on("StatsUpdated", async (data) => {
+        console.log("STats updated:", data);
+        fetchData(data);
+      });
+
+      const fetchData = (data, updateTeam = false) => {
+        stats.value = data.stats;
+        if (updateTeam) {
+          team1.value = data.team1;
+          team2.value = data.team2;
+        }
+      };
+
+      onMounted(async () => {
+        try {
+          const response = await fetch("/api/stats");
+          const data = await response.json();
+          fetchData(data, true);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
+
       const data = [
         {
           id: 1,
           team_id: 2,
-          point: 14,
+          point: 10,
         },
         {
           id: 2,
@@ -64,42 +96,44 @@
         {
           id: 4,
           team_id: 2,
-          point: 17,
+          point: 11,
         },
         {
           id: 5,
           team_id: 1,
-          point: 18,
+          point: 17,
         },
         {
           id: 6,
           team_id: 1,
-          point: 19,
+          point: 18,
         },
         {
           id: 7,
           team_id: 2,
-          point: 20,
+          point: 12,
         },
         {
           id: 8,
           team_id: 1,
-          point: 21,
+          point: 19,
         },
         {
           id: 9,
           team_id: 1,
-          point: 22,
+          point: 20,
         },
         {
           id: 10,
           team_id: 2,
-          point: 23,
+          point: 13,
         },
       ];
 
       return {
-        data,
+        stats,
+        team1,
+        team2,
       };
     },
   }).mount("#app");

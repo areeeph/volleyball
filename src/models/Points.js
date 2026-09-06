@@ -9,8 +9,17 @@ const Point = sequelize.define(
       autoIncrement: true,
       primaryKey: true,
     },
-
     team_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "scores",
+        key: "team_id",
+      },
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE",
+    },
+    point: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

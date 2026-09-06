@@ -1,4 +1,4 @@
-const { Score, Set } = require("../models");
+const { Score, Set, Point } = require("../models");
 const { getIO } = require("../socket");
 
 const index = async (req, res) => {
@@ -185,6 +185,54 @@ const reset = async (req, res) => {
   }
 };
 
+const stats = async (req, res) => {
+  try {
+    const [stats, team1, team2] = await Promise.all([
+      Point.findAll({
+        limit: 10,
+        order: [["id", "DESC"]],
+      }),
+      Score.findOne({ where: { team_id: 1 } }),
+      Score.findOne({ where: { team_id: 2 } }),
+    ]);
+
+    return res.json({ stats: stats.reverse(), team1, team2 });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Server Error");
+  }
+};
+
+const stat = async (req, res) => {
+  try {
+    const { team_id, point } = req.body;
+
+    const stat = await Point.create({
+      team_id: team_id,
+      point: point,
+    });
+
+    const [stats, team] = await Promise.all([
+      Point.findAll({
+        limit: 10,
+        order: [["id", "DESC"]],
+      }),
+      Score.findOne({ team_id: team_id }),
+    ]);
+
+    const io = getIO();
+
+    io.emit("StatsUpdated", { stats: stats.reverse(), team });
+
+    res.json({ message: "Set created successfully" });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Failed to create set");
+  }
+};
+
 module.exports = {
   index,
   update,
@@ -192,4 +240,6 @@ module.exports = {
   update_score,
   create_set,
   deleteSet,
+  stats,
+  stat,
 };
