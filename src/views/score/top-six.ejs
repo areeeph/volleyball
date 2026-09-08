@@ -1,16 +1,55 @@
 <div id="app" class="mx-auto py-5 px-5">
-  <div class="w-70 rounded bg-slate-600 text-gray-100 p-5 flex justify-center">
-    <div>
-      <h2 class="text-gray-200 text-center uppercase mb-1 font-semibold">TMIVT2026 Women's Division</h2>
-      <h2 class="text-gray-200 text-center mb-5 uppercase text-sm font-semibold">Top six Players</h2>
-      <ul>
-        <li class="mb-2 text-lg">{{ names?.name1 }}</li>
-        <li class="mb-2 text-lg">{{ names?.name2 }}</li>
-        <li class="mb-2 text-lg">{{ names?.name3 }}</li>
-        <li class="mb-2 text-lg">{{ names?.name4 }}</li>
-        <li class="mb-2 text-lg">{{ names?.name5 }}</li>
-        <li class="mb-2 text-lg">{{ names?.name6 }}</li>
-      </ul>
+  <div class="relative w-80 rounded bg-slate-600 text-gray-100">
+    <img
+      class="rounded h-74 object-cover w-100"
+      src="/images/template1.png"
+      alt=""
+    />
+    <div class="p-5 absolute top-0 left-0 w-full h-full">
+      <div class="flex flex-col h-full">
+        <h2
+          class="text-gray-200 text-center mb-5 uppercase text-sm font-semibold"
+        >
+          Top six Players
+        </h2>
+
+        <div class="flex items-center space-x-3 mb-3">
+          <img :src="`/images/${names.team1}.png`" class="w-6 h-6" />
+          <h2 class="text-center uppercase text-sm font-semibold">
+            {{ names.name1 }}
+          </h2>
+        </div>
+        <div class="flex items-center space-x-3 mb-3">
+          <img :src="`/images/${names.team2}.png`" class="w-6 h-6" />
+          <h2 class="text-center uppercase text-sm font-semibold">
+            {{ names.name1 }}
+          </h2>
+        </div>
+        <div class="flex items-center space-x-3 mb-3">
+          <img :src="`/images/${names.team3}.png`" class="w-6 h-6" />
+          <h2 class="text-center uppercase text-sm font-semibold">
+            {{ names.name1 }}
+          </h2>
+        </div>
+        <div class="flex items-center space-x-3 mb-3">
+          <img :src="`/images/${names.team4}.png`" class="w-6 h-6" />
+          <h2 class="text-center uppercase text-sm font-semibold">
+            {{ names.name1 }}
+          </h2>
+        </div>
+        <div class="flex items-center space-x-3 mb-3">
+          <img :src="`/images/${names.team5}.png`" class="w-6 h-6" />
+          <h2 class="text-center uppercase text-sm font-semibold">
+            {{ names.name1 }}
+          </h2>
+        </div>
+        <div class="flex items-center space-x-3">
+          <img :src="`/images/${names.team6}.png`" class="w-6 h-6" />
+          <h2 class="text-center uppercase text-sm font-semibold">
+            {{ names.name1 }}
+          </h2>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -22,11 +61,17 @@
     setup() {
       const names = ref({
         name1: "Name 1",
+        team1: "comets",
         name2: "Name 2",
+        team2: "comets",
         name3: "Name 3",
+        team3: "comets",
         name4: "Name 4",
+        team4: "comets",
         name5: "Name 5",
+        team5: "comets",
         name6: "Name 6",
+        team6: "comets",
       });
       const socket = io("http://localhost:7065");
       //const socket = io("https://volley.aliareef.com");

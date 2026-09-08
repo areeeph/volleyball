@@ -1,32 +1,124 @@
 <div id="app" class="mx-auto p-5 bg-white">
-  <h2 class=" uppercase mb-1 font-semibold">TMIVT2026 Women's Division</h2>
-      <h2 class=" mb-5 uppercase text-sm font-semibold">Top six Players</h2>
-  <div class="flex space-x-2 items-center mb-5">
-    <label for="name1">Name 1</label>
-  <input type="text" v-model="name1" class="border border-gray-200 rounded py-1 px-2 ">
-  </div>
-  <div class="flex space-x-2 items-center mb-5">
-    <label for="name1">Name 2</label>
-  <input type="text" v-model="name2" class="border border-gray-200 rounded py-1 px-2 ">
-  </div>
-  <div class="flex space-x-2 items-center mb-5">
-    <label for="name1">Name 3</label>
-  <input type="text" v-model="name3" class="border border-gray-200 rounded py-1 px-2 ">
-  </div>
-  <div class="flex space-x-2 items-center mb-5">
-    <label for="name1">Name 4</label>
-  <input type="text" v-model="name4" class="border border-gray-200 rounded py-1 px-2 ">
-  </div>
-  <div class="flex space-x-2 items-center mb-5">
-    <label for="name1">Name 5</label>
-  <input type="text" v-model="name5" class="border border-gray-200 rounded py-1 px-2 ">
-  </div>
-  <div class="flex space-x-2 items-center mb-5">
-    <label for="name1">Name 6</label>
-  <input type="text" v-model="name6" class="border border-gray-200 rounded py-1 px-2 ">
+  <h2 class="uppercase mb-1 font-semibold">TMIVT2026 Women's Division</h2>
+  <h2 class="mb-5 uppercase text-sm font-semibold">Top six Players</h2>
+
+  <div class="flex space-x-5">
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Name 1</label>
+      <input
+        type="text"
+        v-model="name1"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Team</label>
+      <input
+        type="text"
+        v-model="team1"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
   </div>
 
-  <button v-on:click="update" class="bg-black text-white px-5 py-1.5 rounded">Update</button>
+  <div class="flex space-x-5">
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Name 2</label>
+      <input
+        type="text"
+        v-model="name2"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="team2">Team</label>
+      <input
+        type="text"
+        v-model="team2"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+  </div>
+
+  <div class="flex space-x-5">
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Name 3</label>
+      <input
+        type="text"
+        v-model="name3"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="team3">Team</label>
+      <input
+        type="text"
+        v-model="team3"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+  </div>
+
+  <div class="flex space-x-5">
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Name 4</label>
+      <input
+        type="text"
+        v-model="name4"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="team4">Team</label>
+      <input
+        type="text"
+        v-model="team4"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+  </div>
+
+  <div class="flex space-x-5">
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Name 5</label>
+      <input
+        type="text"
+        v-model="name5"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="team5">Team</label>
+      <input
+        type="text"
+        v-model="team5"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+  </div>
+
+  <div class="flex space-x-5">
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="name1">Name 6</label>
+      <input
+        type="text"
+        v-model="name6"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+    <div class="flex space-x-2 items-center mb-5">
+      <label for="team6">Team</label>
+      <input
+        type="text"
+        v-model="team6"
+        class="border border-gray-200 rounded py-1 px-2"
+      />
+    </div>
+  </div>
+
+  <button v-on:click="update" class="bg-black text-white px-5 py-1.5 rounded">
+    Update
+  </button>
 </div>
 
 <script>
@@ -34,38 +126,57 @@
 
   createApp({
     setup() {
-      const name1 = ref("")
-      const name2 = ref("")
-      const name3 = ref("")
-      const name4 = ref("")
-      const name5 = ref("")
-      const name6 = ref("")
-      
-      const update = async()=>{
-        const response = await fetch("/api/topsix",{
-          method:"POST",
-          headers:{
-            "Content-Type": "application/json"
+      const name1 = ref("");
+      const name2 = ref("");
+      const name3 = ref("");
+      const name4 = ref("");
+      const name5 = ref("");
+      const name6 = ref("");
+
+      const team1 = ref("");
+      const team2 = ref("");
+      const team3 = ref("");
+      const team4 = ref("");
+      const team5 = ref("");
+      const team6 = ref("");
+
+      const update = async () => {
+        const response = await fetch("/api/topsix", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-          body:JSON.stringify({
-            name1:name1.value,
-            name2:name2.value,
-            name3:name3.value,
-            name4:name4.value,
-            name5:name5.value,
-            name6:name6.value
-          })
-        })
-        console.log("clicked")
-      }
+          body: JSON.stringify({
+            name1: name1.value,
+            name2: name2.value,
+            name3: name3.value,
+            name4: name4.value,
+            name5: name5.value,
+            name6: name6.value,
+            team1: team1.value,
+            team2: team2.value,
+            team3: team3.value,
+            team4: team4.value,
+            team5: team5.value,
+            team6: team6.value,
+          }),
+        });
+        console.log("clicked");
+      };
       return {
-       name1,
-       name2,
-       name3,
-       name4,
-       name5,
-       name6,
-       update
+        name1,
+        name2,
+        name3,
+        name4,
+        name5,
+        name6,
+        team1,
+        team2,
+        team3,
+        team4,
+        team5,
+        team6,
+        update,
       };
     },
   }).mount("#app");

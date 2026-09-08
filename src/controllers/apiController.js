@@ -235,11 +235,37 @@ const stat = async (req, res) => {
 
 const topSix = async (req, res) => {
   try {
-    const { name1, name2, name3, name4, name5, name6 } = req.body;
+    const {
+      name1,
+      name2,
+      name3,
+      name4,
+      name5,
+      name6,
+      team1,
+      team2,
+      team3,
+      team4,
+      team5,
+      team6,
+    } = req.body;
 
     const io = getIO();
 
-    io.emit("TopSix", { name1, name2, name3, name4, name5, name6 });
+    io.emit("TopSix", {
+      name1,
+      name2,
+      name3,
+      name4,
+      name5,
+      name6,
+      team1,
+      team2,
+      team3,
+      team4,
+      team5,
+      team6,
+    });
 
     res.json({ message: "Set created successfully" });
   } catch (error) {
