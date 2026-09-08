@@ -9,7 +9,8 @@ const {
   deleteSet,
   stats,
   stat,
-  topSix
+  topSix,
+  position
 } = require("../controllers/apiController");
 
 const router = express.Router();
@@ -25,6 +26,7 @@ router.post("/create-set", create_set);
 router.post("/delete-set", deleteSet);
 
 router.post("/topsix", topSix);
+router.post("/position", position);
 
 router.get("/reset", reset);
 

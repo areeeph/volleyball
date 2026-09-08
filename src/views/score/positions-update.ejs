@@ -29,37 +29,25 @@
 
   createApp({
     setup() {
-      const name1 = ref("");
-      const name2 = ref("");
-      const name3 = ref("");
-      const name4 = ref("");
-      const name5 = ref("");
-      const name6 = ref("");
+      const position = ref("");
+      const name = ref("");
 
       const update = async () => {
-        const response = await fetch("/api/topsix", {
+        const response = await fetch("/api/position", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name1: name1.value,
-            name2: name2.value,
-            name3: name3.value,
-            name4: name4.value,
-            name5: name5.value,
-            name6: name6.value,
+            name:name.value,
+            position:position.value
           }),
         });
         console.log("clicked");
       };
       return {
-        name1,
-        name2,
-        name3,
-        name4,
-        name5,
-        name6,
+       name,
+       position,
         update,
       };
     },

@@ -249,6 +249,22 @@ const topSix = async (req, res) => {
   }
 };
 
+const position = async (req, res) => {
+  try {
+    const { position, name } = req.body;
+
+    const io = getIO();
+
+    io.emit("Position", { position, name });
+
+    res.json({ message: "Set created successfully" });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Failed to create set");
+  }
+};
+
 module.exports = {
   index,
   update,
@@ -259,4 +275,5 @@ module.exports = {
   stats,
   stat,
   topSix,
+  position,
 };

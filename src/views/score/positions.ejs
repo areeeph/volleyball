@@ -1,14 +1,14 @@
 <div id="app" class="mx-auto py-5 px-5">
-  <div class="w-70 rounded bg-white p-5 flex justify-center">
+  <div class="w-70 rounded bg-slate-600 text-gray-100 p-5 flex justify-center">
     <div>
-      <h2 class="text-center uppercase mb-1 font-semibold">
+      <h2 class="text-gray-200 text-center uppercase mb-1 font-semibold">
         TMIVT2026 Women's Division
       </h2>
-      <h2 class="text-center mb-5 uppercase text-sm font-semibold">
-        {{ position }}
+      <h2 class="text-gray-200 text-center mb-5 uppercase text-sm font-semibold">
+        {{ position.position }}
       </h2>
 
-      <h2 class="text-center uppercase text-sm font-semibold">{{ name }}</h2>
+      <h2 class="text-center uppercase text-sm font-semibold">{{ position.name }}</h2>
     </div>
   </div>
 </div>
@@ -18,20 +18,21 @@
 
   createApp({
     setup() {
-      const position = ref("Queen of the tournament");
-      const name = ref("Fathimath Afaaf");
+      const position = ref({
+        position: "Queen of the tournament",
+        name: "Fathimath Afaaf",
+      });
       const socket = io("http://localhost:7065");
       //const socket = io("https://volley.aliareef.com");
 
-      socket.on("TopSix", async (data) => {
+      socket.on("Position", async (data) => {
         console.log("Score updated:", data);
-        names.value = data;
-        console.log(names.value);
+        console.log(data)
+        position.value = data;
       });
 
       return {
         position,
-        name,
       };
     },
   }).mount("#app");

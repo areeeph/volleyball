@@ -16,19 +16,8 @@ const index = async (req, res) => {
 
 const edit = async (req, res) => {
   try {
-    const score = await Score.findByPk(2);
-
-    if (!score) {
-      return res.status(404).render("404", {
-        title: "Score Not Found",
-      });
-    }
-
-    console.log(score.team1_name);
-
     res.render("score/update", {
       title: "Edit Score",
-      score,
     });
   } catch (error) {
     console.error(error);
