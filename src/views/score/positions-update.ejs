@@ -1,0 +1,67 @@
+<div id="app" class="mx-auto p-5 bg-white">
+  <h2 class="uppercase mb-1 font-semibold">TMIVT2026 Women's Division</h2>
+  <h2 class="mb-5 uppercase text-sm font-semibold">Positions</h2>
+
+  <div class="flex space-x-2 items-center mb-5">
+    <label for="name1">Position Name</label>
+    <input
+      type="text"
+      v-model="position"
+      class="border border-gray-200 rounded py-1 px-2"
+    />
+  </div>
+  <div class="flex space-x-2 items-center mb-5">
+    <label for="name1">Full Name</label>
+    <input
+      type="text"
+      v-model="name"
+      class="border border-gray-200 rounded py-1 px-2"
+    />
+  </div>
+ 
+  <button v-on:click="update" class="bg-black text-white px-5 py-1.5 rounded">
+    Update
+  </button>
+</div>
+
+<script>
+  const { createApp, ref, onMounted, computed } = Vue;
+
+  createApp({
+    setup() {
+      const name1 = ref("");
+      const name2 = ref("");
+      const name3 = ref("");
+      const name4 = ref("");
+      const name5 = ref("");
+      const name6 = ref("");
+
+      const update = async () => {
+        const response = await fetch("/api/topsix", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name1: name1.value,
+            name2: name2.value,
+            name3: name3.value,
+            name4: name4.value,
+            name5: name5.value,
+            name6: name6.value,
+          }),
+        });
+        console.log("clicked");
+      };
+      return {
+        name1,
+        name2,
+        name3,
+        name4,
+        name5,
+        name6,
+        update,
+      };
+    },
+  }).mount("#app");
+</script>

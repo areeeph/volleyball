@@ -105,10 +105,64 @@ const stats = async (req, res) => {
   }
 };
 
+const topsix = async (req, res) => {
+  try {
+    res.render("score/top-six", {
+      title: "Top Six",
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Server Error");
+  }
+};
+
+const topsixUpdate = async (req, res) => {
+  try {
+    res.render("score/top-six-update", {
+      title: "Top Six",
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Server Error");
+  }
+};
+
+const positions = async (req, res) => {
+  try {
+    res.render("score/positions", {
+      title: "Top Six",
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Server Error");
+  }
+};
+
+const positionsUpdate = async (req, res) => {
+  try {
+    res.render("score/positions-update", {
+      title: "Top Six",
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send("Server Error");
+  }
+};
+
+
+
 module.exports = {
   index,
   edit,
   update,
   destroy,
   stats,
+  topsix,
+  topsixUpdate,
+  positions,
+  positionsUpdate
 };
